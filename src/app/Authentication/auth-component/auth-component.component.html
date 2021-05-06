@@ -1,11 +1,14 @@
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
         <div class="alert alert-danger" *ngIf="error">
-            <p>{{ error }}</p>
+            <p>{{ error }}</p> <!-- Error Handling -->
         </div>
         <div *ngIf="isLoading" style="text-align: center;" class="loading-text">
             <app-loading-spinner></app-loading-spinner>
         </div>
+
+        <!-- Authorizing the Form -->
+
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
             <div class="form-group">
                 <label for="email">E-Mail</label>
@@ -14,7 +17,8 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" class="form-control" ngModel name="password" required minlength="6" />
+                <input type="password" id="password" class="form-control" ngModel name="password" required
+                    minlength="6" />
             </div>
 
             <div class="form-group">
@@ -29,12 +33,13 @@
 
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <button type="button" class="btn btn-block" (click)="tryGoogleLogin()">
                     <i class="fa fa-google" aria-hidden="true"></i>
                     Login with Google
                 </button>
-            </div>
+            </div> -->
+
         </form>
     </div>
 </div>

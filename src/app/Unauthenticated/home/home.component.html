@@ -1,14 +1,14 @@
 <div class="container">
-
-
-
     <div class="row">
         <div class="col-md-5 col-xs-12 col-md-push-7">
 
             <div class="search-hero search-input-wrapper fadeInUp hidden-md hidden-lg">
                 <label for="search"></label>
-                <input class="form-control" type="text" name="search" id="search" [(ngModel)]="searchText" autocomplete="off" placeholder="   Search by Title or Author name">
-                <div class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <input class="form-control" type="text" name="search" id="search" [(ngModel)]="searchText"
+                    autocomplete="off" placeholder="   Search by Title or Author name">
+                <div class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg></div>
@@ -36,7 +36,8 @@
                                 </div>
 
                                 <div class="likecomment">
-                                    <i style="font-size:21px" class="fa fa-heart"><span>{{i.likestatus.count}}</span></i>
+                                    <i style="font-size:21px"
+                                        class="fa fa-heart"><span>{{i.likestatus.count}}</span></i>
                                     <i style='font-size:21px' class='fa fa-comment-o'>{{commenData[c].length}}</i>
                                 </div>
                             </div>
@@ -54,8 +55,11 @@
 
             <div class="search-hero search-input-wrapper fadeInUp hidden-xs hidden-sm">
                 <label for="search1"></label>
-                <input class="form-control" type="text" id="search1" name="search1" [(ngModel)]="searchText" autocomplete="off" placeholder="   Search by Title or Author name">
-                <div class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <input class="form-control" type="text" id="search1" name="search1" [(ngModel)]="searchText"
+                    autocomplete="off" placeholder="   Search by Title or Author name">
+                <div class="search-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg></div>
@@ -71,7 +75,8 @@
                         <a [routerLink]="[c]">
 
                             <div class="col-md-4 col-xs-12 img-col col-md-push-8">
-                                <img src="{{ i.imgurl }} " alt="Avatar " style="width: 100%;" class="img-responsive" alt="img" />
+                                <img src="{{ i.imgurl }} " alt="Avatar " style="width: 100%;" class="img-responsive"
+                                    alt="img" />
                             </div>
                             <div class="col-md-8 col-xs-12 main-content col-md-pull-4">
                                 <h2 class="title">
@@ -101,9 +106,6 @@
 
 
         </div>
-
-
-
 
 
         <!-- <ng-template #loading>

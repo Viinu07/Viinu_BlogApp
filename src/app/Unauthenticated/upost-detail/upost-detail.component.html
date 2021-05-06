@@ -14,6 +14,7 @@
             <div class="modal-dialog">
 
                 <!-- Modal content-->
+
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -23,7 +24,8 @@
                         <p>Are you sure you want to Delete Post.</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="OnDelete()">Delete</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            (click)="OnDelete()">Delete</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -47,7 +49,9 @@
                     <!--   <img *ngIf="!isImgLoaded" [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' " 
                 class="img-responsive img-circle" /> -->
 
-                    <img alt="" [src]="ProfileImgUrl || 'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png'" class="img-responsive img-circle" />
+                    <img alt=""
+                        [src]="ProfileImgUrl || 'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png'"
+                        class="img-responsive img-circle" />
 
                     <div class="avtar-text">
                         <a class="author-name" (click)="navigateToProfile(unauthpost.uname)">
@@ -74,8 +78,11 @@
                     </p>
                 </div>
                 <div *ngIf="unauthpost.imgurl;else loading">
-                    <img *ngIf="!isImgLoaded" [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' " class="img-responsive" alt="img" />
-                    <img [hidden]=" !isImgLoaded" [src]="unauthpost.imgurl " (load)="isImgLoaded=true " class="img-responsive " alt="">
+                    <img *ngIf="!isImgLoaded"
+                        [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' "
+                        class="img-responsive" alt="img" />
+                    <img [hidden]=" !isImgLoaded" [src]="unauthpost.imgurl " (load)="isImgLoaded=true "
+                        class="img-responsive " alt="">
                     <figcaption>{{ unauthpost.title }}</figcaption>
                 </div>
                 <!-- <div *ngIf="!unauthpost.imgurl ">
@@ -93,14 +100,17 @@
             </div>
         </div>
 
-        <div class="row" *ngIf="(xyz[3]=='publicposts' || xyz[1]==='featured') && publicpostOfSingleUser as data;else loading7">
+        <div class="row"
+            *ngIf="(xyz[3]=='publicposts' || xyz[1]==='featured') && publicpostOfSingleUser as data;else loading7">
             <div class="col-xs-12">
                 <h2 class="title">
                     {{ data.title }}
                 </h2>
                 '
                 <div class="avtar">
-                    <img alt="" [src]="ProfileImgUrl || 'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png'" class="img-responsive img-circle" />
+                    <img alt=""
+                        [src]="ProfileImgUrl || 'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png'"
+                        class="img-responsive img-circle" />
                     <div class="avtar-text">
                         <a class="author-name" (click)="navigateToProfile(data.uname)">
                             {{ data.uname }}
@@ -119,14 +129,18 @@
                     </p>
                 </div>
                 <div *ngIf="data.imgurl;else loading7">
-                    <img alt="" *ngIf="!isImgLoaded" [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' " class="img-responsive" />
-                    <img alt="" [hidden]=" !isImgLoaded" [src]="data.imgurl " (load)="isImgLoaded=true " class="img-responsive ">
+                    <img alt="" *ngIf="!isImgLoaded"
+                        [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' "
+                        class="img-responsive" />
+                    <img alt="" [hidden]=" !isImgLoaded" [src]="data.imgurl " (load)="isImgLoaded=true "
+                        class="img-responsive ">
                     <figcaption>{{ data.title }}</figcaption>
                 </div>
 
                 <div class="stage " (click)="Like() ">
                     <div class="heart " [ngClass]="likeStatus? 'is-active': '' ">
-                        <span>Like {{count}}</span></div>
+                        <span>Like {{count}}</span>
+                    </div>
                 </div>
 
                 <p class="desc" [innerHTML]="data.desc| noSanitize"></p>
@@ -140,7 +154,9 @@
                 <h2 class="title ">{{ i[id]?.title }}</h2>
                 '
                 <div class="avtar ">
-                    <img alt="" src="https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg " class="img-responsive img-circle " />
+                    <img alt=""
+                        src="https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg "
+                        class="img-responsive img-circle " />
 
                     <div class="avtar-text">
                         <a class="author-name" (click)="navigateToProfile(i[id]?.uname)">
@@ -154,8 +170,11 @@
 
 
                 <div *ngIf="i[id]?.imgurl;else loading7">
-                    <img alt="" *ngIf="!isImgLoaded" [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' " class="img-responsive" />
-                    <img alt=" " [hidden]=" !isImgLoaded" [src]="i[id]?.imgurl " (load)="isImgLoaded=true " class="img-responsive ">
+                    <img alt="" *ngIf="!isImgLoaded"
+                        [src]="'https://i.pinimg.com/originals/10/b2/f6/10b2f6d95195994fca386842dae53bb2.png' "
+                        class="img-responsive" />
+                    <img alt=" " [hidden]=" !isImgLoaded" [src]="i[id]?.imgurl " (load)="isImgLoaded=true "
+                        class="img-responsive ">
                     <figcaption>{{ i[id]?.title }}</figcaption>
                 </div>
 
@@ -173,7 +192,9 @@
                 <h2 class="title ">{{ i[id]?.title }}</h2>
                 '
                 <div class="avtar ">
-                    <img alt="" src="https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg " class="img-responsive img-circle " />
+                    <img alt=""
+                        src="https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg "
+                        class="img-responsive img-circle " />
 
                     <div class="avtar-text ">
                         <p class="author-name ">{{ i[id]?.uname }}</p>
@@ -197,7 +218,9 @@
                 <h2 class="title ">{{ i[id]?.title }}</h2>
                 '
                 <div class="avtar ">
-                    <img alt="" src="https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg " class="img-responsive img-circle " />
+                    <img alt=""
+                        src="https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg "
+                        class="img-responsive img-circle " />
 
                     <div class="avtar-text ">
                         <p class="author-name ">{{ i[id]?.uname }}</p>
@@ -230,7 +253,8 @@
                 </div>
                 <div class="row submit-button-container ">
                     <div class="col-md-4 ">
-                        <button class="btn btn-primary submit-button " color="primary " type="submit " [disabled]="!CommentForm.valid ">Post your comment</button>
+                        <button class="btn btn-primary submit-button " color="primary " type="submit "
+                            [disabled]="!CommentForm.valid ">Post your comment</button>
                     </div>
                 </div>
             </form>
@@ -304,7 +328,8 @@
     </ng-template>
 
     <ng-template #loading7>
-        <div *ngIf="!publicpostOfSingleUser && (this.xyz[3]==='publicposts'  || xyz[1]=='featured')" class="loading-text">
+        <div *ngIf="!publicpostOfSingleUser && (this.xyz[3]==='publicposts'  || xyz[1]=='featured')"
+            class="loading-text">
             <app-loading-spinner></app-loading-spinner>
         </div>
 

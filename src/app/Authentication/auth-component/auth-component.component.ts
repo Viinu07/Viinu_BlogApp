@@ -23,6 +23,9 @@ export class AuthComponentComponent implements OnInit {
 
   }
 
+
+  /* Toogle switch */
+
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
@@ -73,7 +76,7 @@ export class AuthComponentComponent implements OnInit {
   }
 
 
-  tryGoogleLogin() {
+  /* tryGoogleLogin() {
     this.isLoading = true
     this.authService.doGoogleLogin()
       .then(res => {
@@ -82,7 +85,10 @@ export class AuthComponentComponent implements OnInit {
         this.getProfileByUid(res.uid)
 
       })
-  }
+  } */
+
+
+  /* Gettting the user id from the profile */
 
 
   getProfileByUid(uid) {
