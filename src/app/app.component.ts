@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "./Authentication/shared/auth.service";
+import { AuthService } from "./common/services/auth.service";
 import { Subscription, Observable } from "rxjs";
 import * as firebase from "firebase/app";
-import { ACrudService } from "./Authentication/shared/acrud.service";
+import { ACrudService } from "./common/services/acrud.service";
 import { Router } from "@angular/router";
 @Component({
   selector: "app-root",

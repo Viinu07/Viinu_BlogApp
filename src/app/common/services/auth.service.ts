@@ -4,11 +4,13 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { catchError, tap } from "rxjs/operators";
 import { throwError, Subject, BehaviorSubject } from "rxjs";
-import { User, User1 } from "./user.model";
+import { User, User1 } from "../models/user.model";
 import { Router } from "@angular/router";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { ToastrService } from "ngx-toastr";
+import { AngularFirestore } from "@angular/fire/firestore";
+
 export interface AuthResponseData {
   kind: string;
   idToken: string;
@@ -32,6 +34,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     public afAuth: AngularFireAuth,
+    public afs: AngularFirestore,
     private router: Router,
     private toastr: ToastrService,
     public ngZone: NgZone
@@ -48,6 +51,10 @@ export class AuthService {
     });
   }
 
+  //funtions are referenced from firebase auth docs
+  //https://firebase.google.com/docs/auth/web/password-auth
+
+  //firebase utilies google api's to propgate and authenticate users
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
@@ -96,28 +103,6 @@ export class AuthService {
       );
   }
 
-  doGoogleLogin() {
-    return new Promise<any>((resolve, reject) => {
-      let provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope("profile");
-      provider.addScope("email");
-      this.afAuth.auth.signInWithPopup(provider).then(
-        (res) => {
-          this.handleAuthentication(
-            res.user.email,
-            res.user.uid,
-            res.user.refreshToken,
-            +360000
-          );
-
-          resolve(res);
-        },
-        (err) => {
-          reject(err);
-        }
-      );
-    });
-  }
   autoLogin() {
     const userData: {
       email: string;
@@ -229,7 +214,31 @@ export class AuthService {
   SignUp(email, password) {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(async (result) => {
+        //this.afs
+        // .collection("users")
+
+        //.add({ ...result });
+
+        //await this.afs.doc(`users/${result.user.uid}/`).set({ ...result.user });
+
+        /*this.afs
+          .collection("users")
+          .add(JSON.parse(JSON.stringify(result.user)));*/
+
+        //console.log(JSON.parse(JSON.stringify(result.user)));
+
+        /*this.afs.doc(`users/${result.user.uid}/`).set({
+          uid: result.user.uid,
+          email: result.user.email,
+        });*/
+
+        /* this.http
+          .post(
+            `https://blogapp-cb4a3-default-rtdb.firebaseio.com/users/${result.user.uid}/public.json`,
+            result
+          )
+          .subscribe((responseData) => {});*/
         this.logout();
         this.SendVerificationMail(); // Sending email verification notification, when new user registers
       });
@@ -278,19 +287,10 @@ export class AuthService {
       emailVerified: user.emailVerified,
     };
 
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
+    localStorage.setItem("user", JSON.stringify(this.userData));
+    //const user1 = JSON.parse(localStorage.getItem("user"));
 
-        localStorage.setItem("user", JSON.stringify(this.userData));
-        const user1 = JSON.parse(localStorage.getItem("user"));
-
-        this.user.next(user1);
-      } else {
-        localStorage.setItem("user", null);
-        JSON.parse(localStorage.getItem("user"));
-      }
-    });
+    this.user.next(this.userData);
   }
   showSuccess() {
     this.toastr.success(

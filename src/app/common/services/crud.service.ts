@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { UPost } from "./UPost.model";
+import { UPost } from "../models/UPost.model";
 import { finalize, catchError } from "rxjs/operators";
 import { Observable, Subject, throwError } from "rxjs";
 import { Router } from "@angular/router";
